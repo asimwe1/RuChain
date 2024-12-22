@@ -1,5 +1,7 @@
 use std::collections::BTreeMap;
 
+#[derive(Debug
+)]
 pub struct Pallet {
     balances: BTreeMap<String, u128>,
 }
@@ -99,4 +101,11 @@ mod tests {
         assert_eq!(balances.balance(&alice), 100);
         assert_eq!(balances.balance(&bob), u128::MAX);
     }
+}
+
+#[test]
+fn set_transfer_balance() {
+    let mut balances = Pallet::new();
+    assert_eq!(balances.balance(&"alice".to_string()), 0);
+    println!("balance: {}", balances.balance(&"bob".to_string()));
 }
